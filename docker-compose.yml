@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: personal-app-api_db
+    image: postgres:13.2
+    restart: always
+    ports:
+      - '${DATABASE_PORT}:${DATABASE_PORT}'
+    volumes:
+      - personal-app-postgres:/var/lib/postgresql
+    environment:
+      - 'POSTGRES_PASSWORD=${DATABASE_PASSWORD}'
+volumes:
+  personal-app-postgres:
